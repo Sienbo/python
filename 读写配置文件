@@ -1,0 +1,50 @@
+'''
+使用configparser模块读取配置文件
+	导入模块
+		import configparser
+	实例化类
+		config = configparser.ConfigParser
+	读取配置文件
+		config.read(fileName)
+	返回配置文件中所有的section
+		config.sections()
+	返回某个项目中的所有键的序列
+		config.options(sectionName)
+	得到该section的所有键值对	
+		config.items(section) 
+	返回section中的option的键值
+		config.get(section,option)
+	添加一个配置文件的section节点
+		config.add_section(sectionName)
+	设置某个section中键名为option的值
+		config.set(section,option,val)
+	删除 option
+		config.remove_option('db', 'host')
+	判断 section 是否存在
+		config.has_section('db')
+	写入配置文件
+		config.write(obj_file)
+	删除 section
+		cp.remove_section('db')
+	得到section中option的值，返回为int类型，还有相应的getboolean()和getfloat() 函数
+	config.getint(section,option) 
+'''
+
+'''
+#配置文件实例
+	#section
+	[oppo]
+	#option
+	platformName = Android
+	platformVersion = 6.0
+	deviceName = 2a22cee
+	appPackage = com.sina.weibo
+	appActivity = .SplashActivity
+	url = http://127.0.0.1:4723/wd/hub
+'''
+
+import configparser
+conf = configparser.ConfigParser()
+conf.add_section("IP")
+conf.set("IP","addr1","192.168.0.0")
+conf.write(open('IPsettings.conf','w'))
